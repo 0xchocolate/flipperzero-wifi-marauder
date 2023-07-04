@@ -16,7 +16,8 @@ Requires a connected dev board running Marauder FW. [See install instructions fr
 From a local clone of this repo, you can also build the app yourself using ufbt.
 
 ## In-app ESP32 flasher (WIP)
-Guide by @francis2054
+Guide by [@francis2054](https://github.com/francis2054)
+
 The app now contains a work-in-progress of an ESP32 flasher (close to the bottom of the marauder menu). Use at your own risk. This hardcodes addresses for non-S3 ESP32 chips.
 
 To use this method:
