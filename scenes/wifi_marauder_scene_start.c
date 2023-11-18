@@ -78,7 +78,7 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
     {"Evil Portal",
      {"start", "set html"},
      2,
-     {"evilportal -c start", "evilportal -c sethtml"},
+     {"evilportal -c start", "evilportal -c sethtmlstr"}, // TODO: add sethtml back to this
      TOGGLE_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
