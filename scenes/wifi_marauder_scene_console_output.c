@@ -147,34 +147,9 @@ void wifi_marauder_scene_console_output_on_enter(void* context) {
         bool send_html = false;
         uint8_t *the_html = NULL;
         size_t html_size = 0;
-        // TODO: cleanup and put this in a better spot after prototyping
         if (app->selected_tx_string &&
             strncmp("evilportal -c sethtmlstr", app->selected_tx_string, strlen("evilportal -c sethtmlstr")) == 0) {
-            FileInfo fi;
-            if (storage_common_stat(app->storage, MARAUDER_INDEX_SAVE_PATH, &fi) ==
-                FSE_OK) {
-                File *index_html = storage_file_alloc(app->storage);
-                if (storage_file_open(index_html, MARAUDER_INDEX_SAVE_PATH, FSAM_READ,
-                                        FSOM_OPEN_EXISTING)) {
-                    the_html = malloc((size_t)fi.size);
-                    uint8_t *buf_ptr = the_html;
-                    size_t read = 0;
-                    while (read < fi.size) {
-                        size_t to_read = fi.size - read;
-                        if (to_read > UINT16_MAX)
-                            to_read = UINT16_MAX;
-                        uint16_t now_read =
-                            storage_file_read(index_html, buf_ptr, (uint16_t)to_read);
-                        read += now_read;
-                        buf_ptr += now_read;
-                    }
-                    html_size = read;
-                    free(buf_ptr);
-                }
-                storage_file_close(index_html);
-                storage_file_free(index_html);
-                send_html = true;
-            }
+            send_html = wifi_marauder_ep_read_html_file(app, the_html, &html_size);
         }
 
         // Send command with newline '\n'
