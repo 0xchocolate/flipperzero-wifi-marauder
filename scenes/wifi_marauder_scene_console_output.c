@@ -118,11 +118,9 @@ void wifi_marauder_scene_console_output_on_enter(void* context) {
         // Create files *before* sending command
         // (it takes time to iterate through the directory)
         if(app->ok_to_save_logs) {
-            strcpy(
-                app->log_file_path,
-                sequential_file_resolve_path(
-                    app->storage, MARAUDER_APP_FOLDER_LOGS, prefix, "log"));
-            if(app->log_file_path != NULL) {
+            char* resolved_path = sequential_file_resolve_path(app->storage, MARAUDER_APP_FOLDER_LOGS, prefix, "log");
+            if(resolved_path != NULL) {
+                strcpy(app->log_file_path, resolved_path);
                 if(storage_file_open(
                        app->log_file, app->log_file_path, FSAM_WRITE, FSOM_CREATE_ALWAYS)) {
                     app->is_writing_log = true;
