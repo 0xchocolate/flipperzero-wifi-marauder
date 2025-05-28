@@ -30,7 +30,7 @@ jobs:
         with:
           submodules: recursive
       - name: Build with ufbt
-        uses: flipperdevices/flipperzero-ufbt-action@v0.1.2
+        uses: flipperdevices/flipperzero-ufbt-action@v0.1.4
         id: build-app
         with:
           sdk-channel: ${{ matrix.sdk-channel }}
