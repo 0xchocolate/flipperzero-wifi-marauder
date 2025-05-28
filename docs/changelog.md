@@ -1,3 +1,10 @@
+## v0.7.2
+
+Thanks to @justcallmekoko for adding app support for the new features in Marauder firmware v1.1.0! See the additions and grab the firmware for your wifi board here: https://github.com/justcallmekoko/ESP32Marauder/releases/tag/v1.1.0
+
+<3 @0xchocolate (cococode)
+
+
 ## v0.7.1
 
 Bug fixes and improvements!
