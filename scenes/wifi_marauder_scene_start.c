@@ -108,7 +108,7 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
     {"Karma Attack",
      {""},
      1,
-     {"Karma -p"},
+     {"karma -p"},
      INPUT_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
