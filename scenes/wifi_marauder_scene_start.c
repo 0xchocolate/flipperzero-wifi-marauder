@@ -27,9 +27,9 @@ typedef struct {
 const WifiMarauderItem items[NUM_MENU_ITEMS] = {
     {"View Log from", {"start", "end"}, 2, {"", ""}, NO_ARGS, FOCUS_CONSOLE_TOGGLE, NO_TIP},
     {"Scan",
-     {"all", "ap", "station", "ping"},
-     4,
-     {"scanall", "scanap", "scansta", "pingscan"},
+     {"all", "ap", "station", "ping", "arp"},
+     5,
+     {"scanall", "scanap", "scansta", "pingscan", "arpscan"},
      NO_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
