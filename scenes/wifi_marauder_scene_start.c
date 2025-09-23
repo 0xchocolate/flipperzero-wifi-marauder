@@ -154,7 +154,7 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      SHOW_STOPSCAN_TIP},
     {"Port Scan",
      {"all", "ssh", "telnet", "dns", "http", "smtp", "https", "rdp"},
-     2,
+     8,
      {"portscan -a -t",
       "portscan -s ssh",
       "portscan -s telnet",
