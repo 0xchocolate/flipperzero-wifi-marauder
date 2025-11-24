@@ -1,6 +1,5 @@
 name: "FAP Build"
 on:
-  workflow_dispatch:
   push:
     branches:
       - feature_wifi_marauder_app
