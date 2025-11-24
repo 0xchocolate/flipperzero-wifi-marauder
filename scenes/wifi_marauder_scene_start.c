@@ -62,7 +62,7 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      FOCUS_CONSOLE_END,
      NO_TIP},
     {"Set MAC",
-     {"rand Ap", "rand Sta", "clone Ap", "clone Sta"},
+     {"rand ap", "rand sta", "clone ap", "clone sta"},
      4,
      {"randapmac", "randstamac", "cloneapmac -a", "clonestamac -s"},
      TOGGLE_ARGS,
