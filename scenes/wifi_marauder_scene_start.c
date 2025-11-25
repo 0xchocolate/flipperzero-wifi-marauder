@@ -12,7 +12,7 @@ typedef enum { FOCUS_CONSOLE_END = 0, FOCUS_CONSOLE_START, FOCUS_CONSOLE_TOGGLE 
 #define SHOW_STOPSCAN_TIP (true)
 #define NO_TIP (false)
 
-#define MAX_OPTIONS (13)
+#define MAX_OPTIONS (14)
 typedef struct {
     const char* item_string;
     const char* options_menu[MAX_OPTIONS];
@@ -119,9 +119,9 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      FOCUS_CONSOLE_END,
      NO_TIP},
     {"Wardrive",
-     {"ap", "station", "bt", "bt cont"},
-     4,
-     {"wardrive", "wardrive -s", "btwardrive", "btwardrive -c"},
+     {"ap", "station", "bt", "bt cont", "flock"},
+     5,
+     {"wardrive", "wardrive -s", "btwardrive", "btwardrive -c", "btwardrive -f"},
      NO_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
@@ -176,8 +176,8 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
     {"Sniff",
-     {"beacon", "deauth", "pmkid", "probe", "pwn", "raw", "bt", "skim", "airtag", "flipper", "packetcount", "pineapple", "multissid"},
-     13,
+     {"beacon", "deauth", "pmkid", "probe", "pwn", "raw", "bt", "skim", "airtag", "flipper", "flock", "packetcount", "pineapple", "multissid"},
+     14,
      {"sniffbeacon",
       "sniffdeauth",
       "sniffpmkid",
@@ -188,6 +188,7 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
       "sniffskim",
       "sniffbt -t airtag",
       "sniffbt -t flipper",
+      "sniffbt -t flock",
       "packetcount",
       "sniffpinescan",
       "sniffmultissid"},
