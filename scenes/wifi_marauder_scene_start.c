@@ -12,7 +12,7 @@ typedef enum { FOCUS_CONSOLE_END = 0, FOCUS_CONSOLE_START, FOCUS_CONSOLE_TOGGLE 
 #define SHOW_STOPSCAN_TIP (true)
 #define NO_TIP (false)
 
-#define MAX_OPTIONS (14)
+#define MAX_OPTIONS (15)
 typedef struct {
     const char* item_string;
     const char* options_menu[MAX_OPTIONS];
