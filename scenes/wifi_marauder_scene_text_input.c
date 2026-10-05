@@ -60,6 +60,8 @@ void wifi_marauder_scene_text_input_on_enter(void* context) {
         wifi_text_input_set_header_text(text_input, "Add target from SSID list");
     } else if(0 == strncmp("findmy -t", app->selected_tx_string, strlen("findmy -t"))) {
         wifi_text_input_set_header_text(text_input, "Enter FindMy device index");
+    } else if(0 == strncmp("remoteid track", app->selected_tx_string, strlen("remoteid track"))) {
+        wifi_text_input_set_header_text(text_input, "Enter Remote ID device index");
     } else {
         wifi_text_input_set_header_text(text_input, "Add command arguments");
     }

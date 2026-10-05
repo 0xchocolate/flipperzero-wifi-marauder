@@ -40,6 +40,13 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      NO_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
+    {"Remote ID",
+     {"scan", "list", "track", "clear"},
+     4,
+     {"remoteid scan", "remoteid list", "remoteid track", "remoteid clear"},
+     NO_ARGS,
+     FOCUS_CONSOLE_END,
+     NO_TIP},
     {"SSID",
      {"add rand", "add name", "remove"},
      3,
@@ -337,6 +344,10 @@ static void wifi_marauder_scene_start_var_list_enter_callback(void* context, uin
                                    (selected_option_index == 0) :
                                    item->focus_console;
     app->show_stopscan_tip = item->show_stopscan_tip;
+    if(strncmp("remoteid scan", app->selected_tx_string, strlen("remoteid scan")) == 0 ||
+       strncmp("remoteid track", app->selected_tx_string, strlen("remoteid track")) == 0) {
+        app->show_stopscan_tip = true;
+    }
 
     if(!app->is_command && selected_option_index == 0) {
         // View Log from start
@@ -368,6 +379,9 @@ static void wifi_marauder_scene_start_var_list_enter_callback(void* context, uin
 
     bool needs_keyboard = (item->needs_keyboard == TOGGLE_ARGS) ? (selected_option_index != 0) :
                                                                   item->needs_keyboard;
+    if(strncmp("remoteid track", app->selected_tx_string, strlen("remoteid track")) == 0) {
+        needs_keyboard = true;
+    }
     if(needs_keyboard) {
         view_dispatcher_send_custom_event(app->view_dispatcher, WifiMarauderEventStartKeyboard);
     } else {
