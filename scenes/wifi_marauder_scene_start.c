@@ -5,14 +5,14 @@
 // For each command, define whether additional arguments are needed
 // (enabling text input to fill them out), and whether the console
 // text box should focus at the start of the output or the end
-typedef enum { NO_ARGS = 0, INPUT_ARGS, TOGGLE_ARGS } InputArgs;
+typedef enum { NO_ARGS = 0, INPUT_ARGS, TOGGLE_ARGS, LAST_OPTION_ARGS } InputArgs;
 
 typedef enum { FOCUS_CONSOLE_END = 0, FOCUS_CONSOLE_START, FOCUS_CONSOLE_TOGGLE } FocusConsole;
 
 #define SHOW_STOPSCAN_TIP (true)
 #define NO_TIP (false)
 
-#define MAX_OPTIONS (17)
+#define MAX_OPTIONS (19)
 typedef struct {
     const char* item_string;
     const char* options_menu[MAX_OPTIONS];
@@ -95,6 +95,13 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      {"ap", "ssid", "station"},
      3,
      {"clearlist -a", "clearlist -s", "clearlist -c"},
+     NO_ARGS,
+     FOCUS_CONSOLE_END,
+     NO_TIP},
+    {"Save/Load List",
+     {"save ap", "save ssid", "load ap", "load ssid"},
+     4,
+     {"save -a", "save -s", "load -a", "load -s"},
      NO_ARGS,
      FOCUS_CONSOLE_END,
      NO_TIP},
@@ -207,8 +214,8 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
     {"Sniff",
-     {"beacon", "deauth", "pmkid", "probe", "pwn", "raw", "bt", "skim", "airtag", "flipper", "flock", "meta", "mactrack", "packetcount", "pineapple", "multissid", "sae"},
-     17,
+     {"beacon", "deauth", "pmkid", "probe", "pwn", "raw", "bt", "skim", "airtag", "flipper", "flock", "meta", "mactrack", "packetcount", "pineapple", "multissid", "sae", "ibeacon", "flock wifi"},
+     19,
      {"sniffbeacon",
       "sniffdeauth",
       "sniffpmkid",
@@ -225,8 +232,17 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
       "packetcount",
       "sniffpinescan",
       "sniffmultissid",
-      "sniffsae"},
+      "sniffsae",
+      "sniffbt -t ibeacon",
+      "sniffflock"},
      NO_ARGS,
+     FOCUS_CONSOLE_END,
+     SHOW_STOPSCAN_TIP},
+    {"Remote ID",
+     {"scan", "list", "clear", "track"},
+     4,
+     {"remoteid scan", "remoteid list", "remoteid clear", "remoteid track"},
+     LAST_OPTION_ARGS,
      FOCUS_CONSOLE_END,
      SHOW_STOPSCAN_TIP},
     {"Fox Hunt",
@@ -279,6 +295,13 @@ const WifiMarauderItem items[NUM_MENU_ITEMS] = {
      {"default", "label"},
      2,
      {"wardrivepoi", "wardrivepoi"},
+     TOGGLE_ARGS,
+     FOCUS_CONSOLE_END,
+     NO_TIP},
+    {"Geofence",
+     {"list", "set", "clear"},
+     3,
+     {"geofence list", "geofence set", "geofence clear"},
      TOGGLE_ARGS,
      FOCUS_CONSOLE_END,
      NO_TIP},
@@ -367,7 +390,9 @@ static void wifi_marauder_scene_start_var_list_enter_callback(void* context, uin
     }
 
     bool needs_keyboard = (item->needs_keyboard == TOGGLE_ARGS) ? (selected_option_index != 0) :
-                                                                  item->needs_keyboard;
+                          (item->needs_keyboard == LAST_OPTION_ARGS) ?
+                              (selected_option_index == item->num_options_menu - 1) :
+                              item->needs_keyboard;
     if(needs_keyboard) {
         view_dispatcher_send_custom_event(app->view_dispatcher, WifiMarauderEventStartKeyboard);
     } else {
