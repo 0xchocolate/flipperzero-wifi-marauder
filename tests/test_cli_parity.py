@@ -114,8 +114,8 @@ class CliParityTests(unittest.TestCase):
         self.assertIn("app->user_input_string_reference = NULL", select_menu)
 
     def test_version_metadata_is_consistent(self):
-        self.assertIn('#define WIFI_MARAUDER_APP_VERSION "v0.8.0"', APP_H)
-        self.assertRegex(FAM, r"fap_version=\(8, 0\)")
+        self.assertIn('#define WIFI_MARAUDER_APP_VERSION "v0.7.6"', APP_H)
+        self.assertRegex(FAM, r"fap_version=\(7, 6\)")
 
     def test_script_edit_buffers_match_input_capacity(self):
         user_input = (ROOT / "scenes/wifi_marauder_scene_user_input.c").read_text()

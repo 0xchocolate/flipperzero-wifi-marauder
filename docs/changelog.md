@@ -1,10 +1,3 @@
-## v0.8.0
-
-CLI parity update for Marauder firmware v1.20.0, including CSI motion, geofences,
-list save/load, manual AP/station entry, GPS constellation controls,
-expanded settings toggles, safer script editing, and command-specific stop behavior.
-
-
 ## v0.7.6
 
 New command support for firmware v1.8.5 and v1.8.6!
